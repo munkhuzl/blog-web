@@ -11,11 +11,12 @@ export function Navbar(){
         setOpen(true);
      }
     return (
-        <div className="navbar flex justify-between w-full mb-10 h-10 bg-white  ">MetaBlog
-            <div >
-                <image src="./public/Union.png" className="width-[36px] height-[36px]"></image>
-            </div>
+        <div className="navbar flex justify-between w-full mb-10 h-10 bg-white  align-middle">
+            
             <span className="text-right gap-10 flex flex-1 text-left md:justify-between md:align-center items-end mr-20">
+                <div> MetaBlog
+                    <image src="./public/Union.png" className="width-[36px] height-[36px]"></image>
+                </div>
                 <a href="" className="hidden lg:block text-right text-gray-600"> Home </a>
                 <a href="" className="hidden lg:block text-right text-gray-600"> Blog </a>
                 <a href="" className="hidden lg:block text-right text-gray-600">Contact</a>
@@ -32,5 +33,5 @@ export function Navbar(){
             </span> 
             <div className="md:hidden md:block justify-end">burger_menu</div>
         </div>
-    )
+    );
 }

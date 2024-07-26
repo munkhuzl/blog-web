@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Navbar } from "./api/component/navbar";
 import React from "react";
+import { Trending } from "./api/component/trending";
 
 export default function Home() {
   return (
@@ -8,7 +9,8 @@ export default function Home() {
       <div>
         <Navbar/>
         <div className="font-bold">All Blog Post</div>
+        <Trending/>
       </div>
     </main>
-  );
+  )
 }
