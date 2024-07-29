@@ -1,7 +1,8 @@
 import Image from "next/image";
-import { Navbar } from "./api/component/navbar";
+import { Navbar } from "@/components/navbar";
 import React from "react";
-import { Trending } from "./api/component/trending";
+import { Trending } from "@/components/trending";
+
 
 export default function Home() {
   return (
