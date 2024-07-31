@@ -49,7 +49,7 @@ export function Trending() {
                         <div className="card-body">
                             <Image src={item.social_image} width={360} height={240} className="rounded-md"/>
                             <div className="badge text-blue-500 p-2">{item.tag_list[0]}</div>
-                            <Link href={item.url} className="text-wrap font-bold" target="_blank">{item.title}</Link>
+                            <Link href={item.path} className="text-wrap font-bold" target="_blank">{item.title}</Link>
                             <div className="flex items-center gap-2">
                                 <Image src={item.user.profile_image_90} width={36} height={36} className="rounded-full mt-1"/>
                                 <div className="text-gray-500">{item.user.name}</div>
