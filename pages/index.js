@@ -8,9 +8,9 @@ export default function Home() {
   return (
     <main>
       <div>
-        <Navbar/>
-        <div className="font-bold">All Blog Post</div>
-        <Trending/>
+        <Navbar />
+    
+        <Trending />
       </div>
     </main>
   )
