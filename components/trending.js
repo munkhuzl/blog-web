@@ -24,7 +24,7 @@ export function Trending() {
                 setArticle(data);
             });
     }, []);
-    function loadMore(){
+  async function loadMore(){
         fetch(`https://dev.to/api/articles?username=devluc&page=${page+1}&per_page=6`)
         .then((response) => {
             return response.json();
@@ -36,7 +36,7 @@ export function Trending() {
             if(newArticle.lenght < 6){
                 setEnded(true);
             }
-            
+            setLoading(false);
         });
 
     }
