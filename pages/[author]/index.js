@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import Image from "next/image";
 
-const tags = [
+const tag = [
     {value: "all", name: "All"},
     {value: "design", name: "Design"},
     {value: "travel", name: "Travel"},
@@ -15,39 +15,39 @@ const tags = [
 import { useEffect, useState } from "react"
 
 export default function Page1() {
-    // const [selectedCategory, selectedCategory]= useState("all");
+    const [selectedCategory, setSelectedCategory]= useState("all");
     const [loading, setLoading] = useState(false)
-    const [articles, setArticles] = useState([])
+    const [article, setArticle] = useState([])
 
-    async function loadArticles(){
+    async function loadArticle(){
         setLoading(true)
-       const response= await fetch(`https://dev.to/api/articles?username=devluc&tag=${selectedCategory}`)
-       const tagsArticles = await response.json();
-       setArticles(tagsArticles);
+       const response= await fetch(`https://dev.to/api/articles?username=dumebii&tag=${selectedCategory}`)
+       const tagArticle = await response.json();
+       setArticle(tagArticle);
        setLoading(false);
 
     }
     
-//     useEffect(() => {
-//         loadArticles();
-// // },[selectedCategory]);
+    useEffect(() => {
+        loadArticle();
+    },[selectedCategory]);
 
     return(
         <div>
             <div>All Blog Post </div>
-            {/* <div className="flex gap-4">
-                {tags.map((tag)=>(
-                <div key={tags.value} className={`cursor-pointer hover:text-orange-500 font-bold ${selectedCategory === tags.value > "text-orange-600"} `} onClick={() => selectedCategory(tags.value)}>
-                    {tags.name}
+            <div className="flex gap-4">
+                {tag.map((tags)=>(
+                <div key={tags.value} className={`cursor-pointer hover:text-orange-500 font-bold ${selectedCategory === tag.value > "text-orange-600"} `} onClick={() => selectedCategory(tag.value)}>
+                    {tag.name}
                 </div>
                 ))}
-            </div> */}
+            </div>
               <div className="md:grid gap-4  md:grid-cols-2 lg:grid-cols-3">
-                {articles.map((item) => (
+                {article.map((item) => (
                     <div key={item.id} className="shadow-lg card bg-base-100">
                         <div className="card-body">
                             <Image src={item.social_image} width={360} height={240} className="rounded-md"/>
-                            <div className="badge text-blue-500 p-2">{item.tag_list[0]}</div>
+                            <div className="badge text-blue-500 p-2">{item.tags_list[0]}</div>
                             <Link href={item.path} className="text-wrap font-bold" target="_blank">{item.title}</Link>
                             <div className="flex items-center gap-2">
                                 <Image src={item.user.profile_image_90} width={36} height={36} className="rounded-full mt-1"/>

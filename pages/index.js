@@ -2,7 +2,7 @@ import { Navbar } from "@/components/navbar";
 import React from "react";
 import { Trending } from "@/components/trending";
 import Footer from "@/components/footer";
-import Page1 from "./[author]";
+import Page from "./[author]/[slug]";
 import { ArticleCard } from "./api/component/ArticleCard";
 export default function Home() {
   return (
@@ -10,9 +10,10 @@ export default function Home() {
       <div>
         <Navbar />
         <Trending />
+        <Page/>
         <Footer/>
-        <ArticleCard/>
-        <Page1/>
+        {/* <ArticleCard/> */}
+        
       </div>
     </main>
   )

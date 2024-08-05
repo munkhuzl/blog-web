@@ -16,7 +16,7 @@ export function Trending() {
     const [prePage, setPrePage]= useState ();
 
         useEffect(() => {
-        fetch("https://dev.to/api/articles?username=devluc&per_page=6")
+        fetch("https://dev.to/api/articles?username=dumebii&per_page=6")
             .then((response) => {
                 return response.json();
             })
@@ -25,7 +25,7 @@ export function Trending() {
             });
     }, []);
   async function loadMore(){
-        fetch(`https://dev.to/api/articles?username=devluc&page=${page+1}&per_page=6`)
+        fetch(`https://dev.to/api/articles?username=dumebii&page=${page+1}&per_page=6`)
         .then((response) => {
             return response.json();
         })
@@ -36,7 +36,7 @@ export function Trending() {
             if(newArticle.lenght < 6){
                 setEnded(true);
             }
-            setLoading(false);
+            setLoading(true);
         });
 
     }

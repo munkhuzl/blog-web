@@ -17,7 +17,7 @@ export default function Page(){
         }, [router.isReady]);
     
     function getArticle(){
-        fetch(`https://dev.to/api/articles/${author}/${slug}`)
+        fetch(`https://dev.to/api/article/${author}/${slug}`)
         .then((response) =>{
             return response.json();
         })
