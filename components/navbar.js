@@ -16,8 +16,8 @@ export function Navbar() {
     setOpen(false);
   }
   return (
-    <div className=" mx-auto flex w-full lg:space-between  sticky top-0 bg-white text-gray-900 dark:bg-black dark:text-white  align h-10  mt-2 z-10">
-      <div className="mx-auto  dark:text-white justify-start">Metablog</div>
+    <div className=" mx-auto container flex w-full lg:space-between  sticky top-0 bg-white text-gray-900 dark:text-white  align   z-10">
+      <div className="mx-auto text-black justify-start">Metablog</div>
       <span className=" gap-10 flex flex-auto w-64 justify-center ">
 
         {/* // flex justify-center

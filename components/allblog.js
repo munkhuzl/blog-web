@@ -1,0 +1,99 @@
+import Link from "next/link";
+import { useEffect } from "react";
+import Image from "next/image";
+import { useState } from "react";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+dayjs.extend(relativeTime);
+import "dayjs/locale/mn";
+dayjs.locale("mn");
+
+
+const tag = [
+  { value: "all", name: "All" },
+  { value: "design", name: "Design" },
+  { value: "travel", name: "Travel" },
+  { value: "fashion", name: "Fashion" },
+  { value: "technology", name: "Technology" },
+  { value: "technology", name: "Branding" },
+  { value: "viewall", name: "View All" },
+];
+
+export function AllBlog() {
+
+  const [article, setArticle] = useState([]);
+  const [page, setPage] = useState(1);
+  const [ended, setEnded] = useState(false);
+  const [prePage, setPrePage] = useState();
+  useEffect(() => {
+    fetch("https://dev.to/api/articles?username=dumebii&per_page=6")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setArticle(data);
+      });
+  }, []);
+  async function loadMore() {
+    setLoading(false);
+    const response = await fetch(
+      `https://dev.to/api/articles?username=dumebii&page=${page + 1}&per_page=6`
+    );
+    const newArticles = await response.json();
+    const updatedArticles = articles.concat(newArticles);
+
+    setArticles(updatedArticles);
+    setPage(page + 1);
+    if (newArticle.lenght < 6) {
+      setEnded(true);
+    }
+    setLoading(false);
+  }
+  return (
+    <div className="container mx-auto mt-10 hidden lg:block">
+      <div className="font-bold">All Blog Post</div>
+      <div className="text-black flex-row">{tag.name}</div>
+
+      <div className="md:grid gap-4  md:grid-cols-2 lg:grid-cols-3">
+        {/* {article.map((item) => console.log("item", item))} */}
+        {article?.map((item) => (
+          <div key={item.id} className="shadow-lg card bg-base-100">
+            <div className="card-body">
+              <Image
+                src={item.social_image}
+                width={360}
+                height={240}
+                className="rounded-md"
+              />
+              <div className="badge text-blue-500 p-2">{item.tag_list[0]}</div>
+              <Link
+                href={item.path}
+                className="text-wrap font-bold"
+                target="_blank"
+              >
+                {item.title}
+              </Link>
+              <div className="flex items-center gap-2">
+                <Image
+                  src={item.user.profile_image_90}
+                  width={36}
+                  height={36}
+                  className="rounded-full mt-1"
+                />
+                <div className="text-gray-500">{item.user.name}</div>
+                <div className="text-gray-500">
+                  {dayjs(item.published_at).fromNow()}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      {!ended && (
+        <div className="py-16 text-center" onClick={loadMore}>
+          <button className="btn bg-lg btn-accent">Load more</button>
+        </div>
+      )}
+    </div>
+  );
+}

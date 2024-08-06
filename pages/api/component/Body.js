@@ -26,7 +26,7 @@ export default function Body (){
                         <Link href={item.url} target="_blank">{item.title}</Link>
                     <div className="flex items-center gap-2"></div>
                     <div> 
-                        {articles.user.name}
+                        {articles.user_name}
                     </div>
                     <div>{dayjs(articles.published_at).locale("mn").fromNow()}</div>
                     </div>

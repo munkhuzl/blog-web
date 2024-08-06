@@ -1,20 +1,30 @@
 import { Navbar } from "@/components/navbar";
 import React from "react";
-import { Trending } from "@/components/trending";
+import { AllBlog } from "@/components/allblog";
 import Footer from "@/components/footer";
 import Page from "./[author]/[slug]";
 import { ArticleCard } from "./api/component/ArticleCard";
+import Page2 from "./[author]";
+import Link from "next/link";
+import Trending from "./[author]";
+// import Body from "./api/component/Body";
+import { Swipe } from "./api/component/swiper";
+
 export default function Home() {
   return (
     <main>
-      <div>
+      <div className="bg-white">
+        <Link href={"/about"}>About</Link>
+        <Link href={"/blog"}>Blog</Link>
         <Navbar />
+        <Swipe/>
+        {/* <Page2 />  */}
         <Trending />
-        <Page/>
-        <Footer/>
-        {/* <ArticleCard/> */}
-        
+        {/* <Body/> */}
+        <AllBlog/>
+        <Footer />
+     
       </div>
     </main>
-  )
+  );
 }
