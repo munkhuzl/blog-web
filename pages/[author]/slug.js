@@ -1,4 +1,4 @@
-
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import parse from 'html-react-parser';
@@ -31,9 +31,14 @@ export default function Page(){
     if (!article) return <div>Loading...</div>
 
     return (
-        <div classname="container mx-auto ">
-            <div>{article.title}</div>
-            <div className="prose">{parse(article.body_html)}</div>
+        <div>
+            <Head>
+                <meta property="og:title" content="Hello World"/>
+            </Head>
+            <div classname="container mx-auto ">
+                <div>{article.title}</div>
+                <div className="prose">{parse(article.body_html)}</div>
+            </div>
         </div>
     );
 }
