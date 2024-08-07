@@ -8,7 +8,7 @@ import Page2 from "./[author]";
 import Link from "next/link";
 import Trending from "./[author]";
 // import Body from "./api/component/Body";
-import { Swipe } from "./api/component/swiper";
+import UncontrolledExample, { Swipe } from "./api/component/slider";
 import Contact from "./[author]/contact";
 
 export default function Home() {
@@ -19,7 +19,7 @@ export default function Home() {
         <Link href={"/blog"}>Blog</Link>
         <Link href={"/contact"}>Contact</Link> */}
         <Navbar />
-        <Swipe/>
+        <UncontrolledExample/>
         {/* <Page2 />  */}
         <Trending />
         {/* <Body/> */}
