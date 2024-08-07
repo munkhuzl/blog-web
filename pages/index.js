@@ -9,21 +9,24 @@ import Link from "next/link";
 import Trending from "./[author]";
 // import Body from "./api/component/Body";
 import { Swipe } from "./api/component/swiper";
+import Contact from "./[author]/contact";
 
 export default function Home() {
   return (
     <main>
       <div className="bg-white">
-        <Link href={"/about"}>About</Link>
+        {/* <Link href={"/about"}>About</Link>
         <Link href={"/blog"}>Blog</Link>
+        <Link href={"/contact"}>Contact</Link> */}
         <Navbar />
         <Swipe/>
         {/* <Page2 />  */}
         <Trending />
         {/* <Body/> */}
         <AllBlog/>
+
         <Footer />
-     
+    
       </div>
     </main>
   );

@@ -16,7 +16,7 @@ export function Navbar() {
     setOpen(false);
   }
   return (
-    <div className=" mx-auto container flex w-full lg:space-between  sticky top-0 bg-white text-gray-900 dark:text-white  align   z-10">
+    <div className=" mx-auto container flex items-center w-full lg:space-between  sticky top-0 bg-white text-gray-900 dark:text-white  align  mt-4 z-10">
       <div className="mx-auto text-black justify-start">Metablog</div>
       <span className=" gap-10 flex flex-auto w-64 justify-center ">
 
@@ -30,12 +30,12 @@ export function Navbar() {
           Home
         </Link>
         <Link
-          href={"work"}
+          href={"/Pages/page"}
           className="hidden lg:block text-center text-gray-600"
         >
           Blog
         </Link>
-        <Link href={"/"} className="hidden lg:block text-center text-gray-600">
+        <Link href={"/Pages/contact"} className="hidden lg:block text-center text-gray-600">
           Contact
         </Link>
 

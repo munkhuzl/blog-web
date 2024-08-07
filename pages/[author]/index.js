@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import Image from "next/image";
 
-const tag = [
+const tags = [
   { value: "all", name: "All" },
   { value: "design", name: "Design" },
   { value: "travel", name: "Travel" },
@@ -36,23 +36,9 @@ export default function Trending() {
   }, [selectedCategory]);
 
   return (
-    <div className="container mx-auto">
-      <div className="mx-auto font-bold text-black mb-4" >Trending</div>
-      <div className="">{tag.name}</div>
-      <div className="flex gap-4">
-     
-        {tag.map((tags) => (
-          <div
-            key={tags.value}
-            className={`cursor-pointer hover:text-orange-500 font-bold ${
-              selectedCategory === tag.value > "text-orange-600"
-            } `}
-            onClick={() => selectedCategory(tag.value)}
-          >
-            {tag.name}
-          </div>
-        ))}
-      </div>
+    <div className="container mx-auto mt-20">
+      <div className="mx-auto text-2xl mb-3 font-bold text-black mb-4 hidden lg:block">Trending</div>
+
       <div className="md:grid gap-4  md:grid-cols-2 lg:grid-cols-4">
         {article.map((item) => (
           <div key={item.id} className="shadow-lg card bg-base-100">
@@ -61,7 +47,7 @@ export default function Trending() {
                 src={item.social_image}
                 width={290}
                 height={360}
-                className="rounded-md"
+                className="rounded-md container"
               />
               <div className="badge text-blue-500 p-2">
                 {item.tags_list && item.tags_list[0]}
@@ -92,4 +78,3 @@ export default function Trending() {
     </div>
   );
 }
-

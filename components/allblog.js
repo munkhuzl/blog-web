@@ -9,7 +9,7 @@ import "dayjs/locale/mn";
 dayjs.locale("mn");
 
 
-const tag = [
+const tags = [
   { value: "all", name: "All" },
   { value: "design", name: "Design" },
   { value: "travel", name: "Travel" },
@@ -20,11 +20,12 @@ const tag = [
 ];
 
 export function AllBlog() {
-
-  const [article, setArticle] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("all");
   const [page, setPage] = useState(1);
   const [ended, setEnded] = useState(false);
   const [prePage, setPrePage] = useState();
+  const [loading, setLoading] = useState(false);
+  const [article, setArticle] = useState([]);
   useEffect(() => {
     fetch("https://dev.to/api/articles?username=dumebii&per_page=6")
       .then((response) => {
@@ -49,13 +50,39 @@ export function AllBlog() {
     }
     setLoading(false);
   }
+
+  async function loadArticle() {
+    setLoading(true);
+    const response = await fetch(
+      `https://dev.to/api/articles?username=dumebii&tag=${selectedCategory}&per_page=6`
+    );
+    const tagArticle = await response.json();
+    setArticle(tagArticle);
+    setLoading(false);
+  }
+
+  useEffect(() => {
+    loadArticle();
+  }, [selectedCategory]);
+
   return (
-    <div className="container mx-auto mt-10 hidden lg:block">
-      <div className="font-bold">All Blog Post</div>
-      <div className="text-black flex-row">{tag.name}</div>
+    <div className="container mx-auto mt-20 hidden lg:block">
+      <div className="font-bold text-black text-2xl mb-3">All Blog Post</div>
+      <div className="flex gap-4 mb-3">
+        {tags.map((tag) => (
+          <div
+            key={tag.value}
+            className={`cursor-pointer hover:text-orange-500 font-bold mb-3 ${
+              selectedCategory === tag.value > "text-orange-600"
+            } `}
+            onClick={() => selectedCategory(tag.value)}
+          >
+            {tag.name}
+          </div>
+        ))}
+      </div>
 
       <div className="md:grid gap-4  md:grid-cols-2 lg:grid-cols-3">
-        {/* {article.map((item) => console.log("item", item))} */}
         {article?.map((item) => (
           <div key={item.id} className="shadow-lg card bg-base-100">
             <div className="card-body">
