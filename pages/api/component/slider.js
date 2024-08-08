@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Swiper, SwiperSlide, useSwiper} from 'swiper/react';
 import {A11y} from 'swiper/modules';
 import 'swiper/css/navigation';
@@ -54,3 +55,5 @@ return(
   </Swiper>
 );
 };
+=======
+>>>>>>> f06f67f92bbeb5ae53b99fae17a461a054eed541
