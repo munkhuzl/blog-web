@@ -1,6 +1,6 @@
+"use client";
 import { name } from "@/components/dayjs-mn";
 import Link from "next/link";
-
 import Image from "next/image";
 
 const tags = [
@@ -15,6 +15,7 @@ const tags = [
 
 import { useEffect, useState } from "react";
 import dayjs from "dayjs";
+
 
 export default function Trending() {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -36,6 +37,8 @@ export default function Trending() {
   }, [selectedCategory]);
 
   return (
+    <>
+ 
     <div className="container mx-auto mt-20">
       <div className="mx-auto text-2xl mb-3 font-bold text-black mb-4 hidden lg:block">Trending</div>
 
@@ -76,5 +79,7 @@ export default function Trending() {
         ))}
       </div>
     </div>
+
+    </>
   );
 }

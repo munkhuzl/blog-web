@@ -1,3 +1,4 @@
+"use client";
 import { Image } from "next/image";
 import { useState } from "react";
 import { IoMdCloseCircleOutline } from "react-icons/io";
@@ -24,7 +25,7 @@ export function Navbar() {
         // flex flex-col items-center  */}
 
         <Link
-          href={"/trending.js"}
+          href={"/article"}
           className="hidden lg:block text-center text-gray-600"
         >
           Home
@@ -35,7 +36,7 @@ export function Navbar() {
         >
           Blog
         </Link>
-        <Link href={"/Pages/contact"} className="hidden lg:block text-center text-gray-600">
+        <Link href={"/contact"} className="hidden lg:block text-center text-gray-600">
           Contact
         </Link>
 
