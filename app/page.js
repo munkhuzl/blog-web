@@ -6,7 +6,7 @@ import Footer from "@/components/footer";
 import { Slidernews } from "@/pages/api/component/slider";
 import Trending from "./trendingpage/page";
 import { AllBlog } from "./allblogPost/plogpage";
-import { ArticleCard } from "@/pages/api/component/ArticleCard";
+// import { ArticleCard } from "@/pages/api/component/ArticleCard";
 
 export default function Home() {
   return (
@@ -17,7 +17,7 @@ export default function Home() {
         <Trending />
        <AllBlog/>
         <Footer />
-        <ArticleCard/>
+        {/* <ArticleCard/> */}
       </div>
     </main>
   );
