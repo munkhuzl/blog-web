@@ -7,8 +7,6 @@ import relativeTime from "dayjs/plugin/relativeTime";
 dayjs.extend(relativeTime);
 import "dayjs/locale/mn";
 dayjs.locale("mn");
-
-
 const tags = [
   { value: "all", name: "All" },
   { value: "design", name: "Design" },
@@ -25,7 +23,7 @@ export function AllBlog() {
   const [ended, setEnded] = useState(false);
   const [prePage, setPrePage] = useState();
   const [loading, setLoading] = useState(false);
-  const [article, setArticle] = useState([]);
+  const [articles, setArticle] = useState([]);
   useEffect(() => {
     fetch("https://dev.to/api/articles?username=dumebii&per_page=6")
       .then((response) => {
@@ -66,6 +64,7 @@ export function AllBlog() {
   }, [selectedCategory]);
 
   return (
+    
     <div className="container mx-auto mt-20 hidden lg:block">
       <div className="font-bold text-black text-2xl mb-3">All Blog Post</div>
       <div className="flex gap-4 mb-3">
@@ -83,7 +82,7 @@ export function AllBlog() {
       </div>
 
       <div className="md:grid gap-4  md:grid-cols-2 lg:grid-cols-3">
-        {article?.map((item) => (
+        {articles.map((item) => (
           <div key={item.id} className="shadow-lg card bg-base-100">
             <div className="card-body">
               <Image
@@ -118,7 +117,9 @@ export function AllBlog() {
       </div>
       {!ended && (
         <div className="py-16 text-center" onClick={loadMore}>
-          <button className="btn bg-lg btn-accent">Load more</button>
+          <button disabled={loading} className="btn bg-lg btn-accent">
+            {loading && <span className="loading loading-spinner"></span>}
+            Load more</button>
         </div>
       )}
     </div>

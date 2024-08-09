@@ -38,9 +38,8 @@ export default function Trending() {
 
   return (
     <>
- 
     <div className="container mx-auto mt-20">
-      <div className="mx-auto text-2xl mb-3 font-bold text-black mb-4 hidden lg:block">Trending</div>
+      <div className="mx-auto text-2xl font-bold text-black mb-4 hidden lg:block">Trending</div>
 
       <div className="md:grid gap-4  md:grid-cols-2 lg:grid-cols-4">
         {article.map((item) => (

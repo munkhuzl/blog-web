@@ -4,6 +4,8 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import parse from 'html-react-parser';
 import Footer from "@/components/footer";
+
+
 export default function Page(){
     const [article, setArticle] =useState();
     const [loading, setLoading]= useState(false);
@@ -36,6 +38,7 @@ export default function Page(){
                 <div>{article.title}</div>
                 <div className="prose">{parse(article.body_html)}</div>
             </div>
-            <Footer/>        </>
+            <Footer/>        
+        </div>
     );
 }
