@@ -16,7 +16,7 @@ const tags = [
   { value: "technology", name: "Branding" },
   { value: "viewall", name: "View All" },
 ];
-
+const pageSize = 6;
 export function AllBlog() {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [page, setPage] = useState(1);
@@ -24,31 +24,24 @@ export function AllBlog() {
   const [prePage, setPrePage] = useState();
   const [loading, setLoading] = useState(false);
   const [articles, setArticle] = useState([]);
+  
   useEffect(() => {
-    fetch("https://dev.to/api/articles?username=dumebii&per_page=6")
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setArticle(data);
-      });
+  loadMore();
   }, []);
   async function loadMore() {
     setLoading(false);
-    const response = await fetch(
-      `https://dev.to/api/articles?username=dumebii&page=${page + 1}&per_page=6`
-    );
-    const newArticles = await response.json();
+    const response = await fetch(`https://dev.to/api/articles?username=dumebii&page=${page + 1}&per_page=6`);
+   .then((response)=>{
+   return response.json();
+   })
+    .then((newArticles) => {
     const updatedArticles = articles.concat(newArticles);
-
     setArticles(updatedArticles);
-    setPage(page + 1);
-    if (newArticle.lenght < 6) {
-      setEnded(true);
-    }
-    setLoading(false);
-  }
-
+    setPage(page+1);
+    if(newArticles.length < pageSize){
+    setEnded(true)
+      ;}
+    })
   async function loadArticle() {
     setLoading(true);
     const response = await fetch(
